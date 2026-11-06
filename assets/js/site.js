@@ -1,5 +1,5 @@
 /* Gabriel Basso — progressive enhancement, no external dependencies.
- * The main portfolio contact form sends real messages via FormSubmit.
+ * The main portfolio contact form posts to FormSubmit.io using native HTML.
  * Demonstration-site forms remain simulations and do not transmit data.
  */
 (() => {
@@ -11,6 +11,47 @@
   // Resolve assets from the actual script location (supports local file:// and hosted subfolders).
   const imageBase = new URL('../img/', document.currentScript.src);
   const imageAsset = name => new URL(name, imageBase).href;
+
+  // Continuous, viewport-aware marquees (portfolio and Risco).
+  // Build two *identical* groups, each longer than the viewport, then move by
+  // exactly one group. This prevents blank frames and visible jumps at any width.
+  $$('[data-continuous-marquee]').forEach(root => {
+    const track=$('[data-continuous-track]',root);
+    const original=track?.firstElementChild;
+    if(!track || !original)return;
+    const unit=original.cloneNode(true);
+    const SPEED=36; // pixels / second, constant on desktop and mobile
+    let frame=0;
+    const rebuild=()=>{
+      if(!root.isConnected)return;
+      track.style.animation='none';
+      track.replaceChildren();
+      const group=document.createElement('div');
+      group.className='marquee-group';
+      group.setAttribute('aria-hidden','true');
+      track.append(group);
+      group.append(unit.cloneNode(true));
+      const firstWidth=group.getBoundingClientRect().width;
+      if(firstWidth<1)return;
+      // Extra unit ensures the first group can always cover the viewing area,
+      // including during fractional-pixel layout and wide desktop viewports.
+      const repetitions=Math.max(2,Math.ceil(root.clientWidth/firstWidth)+2);
+      for(let i=1;i<repetitions;i++)group.append(unit.cloneNode(true));
+      const duplicate=group.cloneNode(true);
+      track.append(duplicate);
+      const distance=group.getBoundingClientRect().width;
+      track.style.setProperty('--marquee-duration',`${(distance/SPEED).toFixed(3)}s`);
+      track.style.removeProperty('animation');
+      track.classList.add('marquee-ready');
+    };
+    rebuild();
+    // Fonts can change text width after the first render.
+    if(document.fonts?.ready)document.fonts.ready.then(rebuild).catch(()=>{});
+    window.addEventListener('resize',()=>{
+      cancelAnimationFrame(frame);
+      frame=requestAnimationFrame(rebuild);
+    },{passive:true});
+  });
 
   // Navigation / accessibility.
   $$('[data-menu]').forEach(toggle => {
@@ -43,60 +84,9 @@
     reveals.forEach(el => observer.observe(el));
   } else reveals.forEach(el => el.classList.add('is-visible'));
 
-  // Real portfolio contact form — submits to FormSubmit without opening an email application.
-  // The destination address needs one-time verification by Gabriel before notifications begin.
-  const contactForm = $('[data-contact-form]');
-  if (contactForm) {
-    const submitButton = $('[data-contact-submit]', contactForm);
-    const status = $('[data-contact-status]', contactForm);
-    const originalButtonHtml = submitButton.innerHTML;
-    let sending = false;
-    const setStatus = (message, type = '') => {
-      status.textContent = message;
-      status.dataset.state = type;
-    };
-    contactForm.addEventListener('submit', async event => {
-      event.preventDefault();
-      if (sending || !contactForm.reportValidity()) return;
-      // A honeypot is only a frictionless first filter; the provider also handles spam.
-      if ($('[name="_honey"]', contactForm).value.trim()) return;
-
-      sending = true;
-      contactForm.setAttribute('aria-busy', 'true');
-      submitButton.disabled = true;
-      submitButton.textContent = 'Enviando mensagem…';
-      setStatus('Enviando sua mensagem com segurança…', 'loading');
-      const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 20000);
-      try {
-        const action = new URL(contactForm.action);
-        action.pathname = '/ajax' + action.pathname;
-        const response = await fetch(action.href, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new URLSearchParams(new FormData(contactForm)),
-          signal: controller.signal
-        });
-        if (!response.ok) throw new Error('HTTP ' + response.status);
-        const data = await response.json();
-        const accepted = data && (data.success === true || data.success === 'true');
-        if (!accepted) throw new Error('Resposta sem confirmação do serviço.');
-        contactForm.reset();
-        setStatus('Mensagem enviada! Obrigado pelo contato. Sua solicitação foi recebida pelo serviço de envio e retornarei assim que possível.', 'success');
-      } catch (error) {
-        const isTimeout = error && error.name === 'AbortError';
-        setStatus(isTimeout
-          ? 'O envio demorou mais que o esperado. Confira sua conexão e tente novamente, ou me chame pelo WhatsApp.'
-          : 'Não foi possível confirmar o envio. Seus dados continuam preenchidos: tente novamente ou fale comigo pelo WhatsApp.', 'error');
-      } finally {
-        clearTimeout(timeout);
-        sending = false;
-        contactForm.removeAttribute('aria-busy');
-        submitButton.disabled = false;
-        submitButton.innerHTML = originalButtonHtml;
-      }
-    });
-  }
+  // Portfolio form uses the native HTML POST endpoint provided by FormSubmit.io.
+  // No JavaScript interception: this avoids unsupported AJAX paths,
+  // false "message sent" notices, and email-application popups.
 
   // Actual interactive preview: iframe resizing. Nothing decorative.
   const controls = $('[data-preview-controls]');
@@ -320,8 +310,11 @@
       panel.dataset.inverse=String(!inverse);
       panel.style.background=inverse?'#D9FF3F':'#17191D';
       panel.style.color=inverse?'#151515':'#D9FF3F';
-      $('[data-risco-palette]',panel).textContent=inverse?'Inverter linguagem ↗':'Voltar à linguagem original ↗';
       const button=$('[data-risco-palette]',panel);
+      // Preserve the vector icon on palette swaps; never fall back to an emoji glyph.
+      const icon=button.querySelector('.ui-icon')?.cloneNode(true);
+      button.textContent=inverse?'Inverter linguagem ':'Voltar à linguagem original ';
+      if(icon)button.append(icon);
       button.style.color='inherit';button.style.borderColor='currentColor';
     });
   });

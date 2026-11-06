@@ -1,0 +1,30 @@
+PORTFÓLIO GABRIEL BASSO — ATUALIZAÇÃO FINAL
+
+INCLUÍDO NESTA VERSÃO:
+- Imagens naturais otimizadas da última versão.
+- Faixa do portfólio e faixa da Risco com movimento infinito contínuo, duplicação perfeita e velocidade constante.
+- Ícones decorativos substituídos por SVG vetorial (sem emojis do Android/iPhone).
+- Formulário de contato integrado ao FormSubmit.io, formulário ID 4ce3d3f6-82e0-4bca-a6aa-7d43be9a0dd5.
+- Campos exigidos: Seu nome, E-mail, Whatsapp, Tipo de projeto, Sobre o projeto.
+- Honeypot _formsubmit_id, conforme código fornecido pelo usuário.
+
+PUBLICAÇÃO:
+1. Extraia o ZIP antes de usar.
+2. Envie TODO O CONTEÚDO da pasta ao repositório GitHub Pages, na raiz.
+3. Commit changes; aguarde a atualização do GitHub Pages.
+4. Após a publicação, recarregue com Ctrl+F5.
+5. Faça um envio REAL de teste pelo site publicado (não pelo arquivo file://).
+6. No painel FormSubmit.io, confirme a conta, o domínio (se for solicitado) e o recebimento.
+
+IMPORTANTE SOBRE O FORMULÁRIO:
+- O envio usa POST HTML nativo ao endpoint fornecido pelo FormSubmit.io.
+- O navegador pode abrir a página de confirmação do serviço após o envio.
+- Não abre Outlook/Gmail nem depende de um servidor hospedado pelo usuário.
+- A entrega real ao seu e-mail depende de conta verificada e do serviço externo.
+- O plano grátis pode agrupar os envios em um resumo periódico, não necessariamente imediato.
+- NENHUM teste deste pacote envia dados reais para seu formulário.
+
+SOBRE A FAIXA:
+- A animação é calculada para cobrir a viewport com 2 grupos idênticos.
+- Respeita prefers-reduced-motion.
+- Teste local pode ser feito abrindo index.html ou por GitHub Pages.

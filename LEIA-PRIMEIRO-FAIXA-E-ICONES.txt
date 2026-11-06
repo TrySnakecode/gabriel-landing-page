@@ -1,0 +1,18 @@
+GABRIEL BASSO — Faixa contínua + ícones vetoriais no mobile
+
+Esta versão foi baseada no pacote IMAGENS NATURAIS.
+
+1. Faixa do portfólio e faixa da Risco agora repetem em loop infinito.
+   O JavaScript calcula a quantidade de cópias necessária para cada largura
+   de tela e move a faixa pela largura exata de uma sequência duplicada.
+2. Ícones de estrela, setas e confirmação foram convertidos de caracteres
+   dependentes do sistema em SVG vetorial consistente para Android/iOS/desktop.
+3. A estrela giratória junto ao retrato também foi substituída por SVG.
+4. Formulário FormSubmit, retrato, imagens naturais e demais páginas preservados.
+5. Respeita preferência do dispositivo por movimento reduzido.
+
+PUBLICAÇÃO:
+Extraia este ZIP; envie TODOS os arquivos e pastas para a RAIZ do
+repositório GitHub Pages (index.html deve ficar na raiz). Faça Commit.
+Após deploy, recarregue com Ctrl+F5 para atualizar a versão em cache.
+Verifique também a ativação do FormSubmit caso ainda não tenha feito.

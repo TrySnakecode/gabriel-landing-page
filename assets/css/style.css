@@ -37,3 +37,17 @@
 .risco-hero h1{font-size:clamp(5.25rem,11vw,13rem);overflow-wrap:anywhere}
 .risco-inner-hero h1{overflow-wrap:anywhere}
 @media(max-width:760px){.risco-hero h1{font-size:clamp(3.3rem,10vw,6.3rem);letter-spacing:-.065em;line-height:.88}.risco-inner-hero h1{font-size:clamp(3.9rem,10vw,7rem)}.risco-statement h2{overflow-wrap:anywhere}}
+
+/* Portfolio contact — automated delivery states */
+.contact-form-intro{font-size:.85rem;line-height:1.7;color:#D4CDC5;max-width:42ch;margin:-13px 0 25px}
+.contact-form .field-optional{font-size:.69rem;color:#BBB5B0;font-weight:400}
+.contact-form .field select{color:#F3F0EA;cursor:pointer;color-scheme:dark}
+.contact-form .field select option{background:#302E2B;color:#F3F0EA}
+.contact-form [data-contact-submit]:disabled{cursor:progress;opacity:.72}
+.contact-honeypot{position:absolute!important;inline-size:1px!important;block-size:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important}
+.form-status:empty{display:none}
+.form-status{margin-top:18px;border:1px solid #FFFFFF30;padding:14px 16px;font-size:.82rem;line-height:1.5;color:#F3F0EA}
+.form-status[data-state="success"]{border-color:#A6BC9A;color:#D5E7CB;background:#2C403033}
+.form-status[data-state="error"]{border-color:#D98A70;color:#F4BDAA;background:#6B271322}
+.form-status[data-state="loading"]{border-color:#BEB8B2;color:#E8DDD0}
+@media(max-width:580px){.contact-form{padding:24px}.contact-form-intro{font-size:.82rem}}

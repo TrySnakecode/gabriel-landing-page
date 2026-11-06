@@ -1,0 +1,51 @@
+PORTFÓLIO GABRIEL BASSO — FORMULÁRIO COM ENVIO AUTOMÁTICO
+============================================================
+
+O que foi alterado
+------------------
+O formulário da página principal agora envia as informações diretamente para
+  gabrielbassoadc@outlook.com
+usando https://formsubmit.co, sem abrir Gmail, Outlook ou outro app do visitante.
+
+Campos: nome, e-mail, WhatsApp opcional, tipo de projeto opcional e mensagem.
+O visitante vê uma mensagem de sucesso ou erro dentro da própria página.
+Os formulários das quatro marcas fictícias continuam SIMULADOS.
+
+ATIVAÇÃO OBRIGATÓRIA UMA VEZ
+----------------------------
+1. Envie TODOS os arquivos deste ZIP ao repositório GitHub Pages (substituindo os antigos).
+2. Abra o seu site publicado em https://SEUUSUARIO.github.io .
+3. Preencha o formulário com uma mensagem de teste e clique em Enviar mensagem.
+4. Acesse a caixa de entrada (e a pasta de spam) de gabrielbassoadc@outlook.com.
+5. Abra o e-mail de ativação enviado pelo FormSubmit e clique no link de confirmação.
+6. Envie uma segunda mensagem de teste. Verifique que ela chegou à sua caixa de entrada.
+
+ANTES de clicar no link de ativação, o FormSubmit não encaminha mensagens normalmente.
+A plataforma informa que conserva mensagens pendentes por até 30 dias.
+
+Atenção: essa é uma integração com serviço externo gratuito; disponibilidade,
+entrega de e-mails e filtros de spam dependem do FormSubmit. Não foi feito
+nenhum envio real de teste durante a preparação do ZIP, para não disparar e-mails.
+A mensagem de sucesso no site é exibida apenas quando o serviço confirma
+que aceitou o envio, não garante a chegada ao inbox.
+
+PARA PUBLICAR NO GITHUB PAGES
+-----------------------------
+- Extraia o ZIP.
+- Envie os arquivos EXTRAÍDOS para a raiz do repositório (não o ZIP, nem a pasta mãe).
+- index.html deve estar na raiz, ao lado de assets/, demo/ e projetos/.
+- Configure Settings > Pages > Deploy from branch > main > /(root).
+
+SE O ENVIO FALHAR
+-----------------
+- Verifique conexão e bloqueadores de anúncios/privacidade que podem bloquear o serviço.
+- Confira no e-mail se já foi feita a ativação.
+- Tente com o site hospedado em https://, não a partir do arquivo local.
+- Os links de WhatsApp e e-mail continuam disponíveis na seção Contato.
+
+PRIVACIDADE E SEGURANÇA
+----------------------
+- As informações são enviadas ao serviço FormSubmit, conforme informado no site.
+- Há um campo honeypot para reduzir spam, e os envios são tratados pelo provedor.
+- A checagem de formato e os limites de caracteres são feitos no navegador.
+- Não envie dados sensíveis pelo formulário.

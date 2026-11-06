@@ -1,5 +1,6 @@
 /* Gabriel Basso — progressive enhancement, no external dependencies.
- * All interactive concept form flows are client-side simulations; no data is transmitted.
+ * The main portfolio contact form sends real messages via FormSubmit.
+ * Demonstration-site forms remain simulations and do not transmit data.
  */
 (() => {
   'use strict';
@@ -42,19 +43,60 @@
     reveals.forEach(el => observer.observe(el));
   } else reveals.forEach(el => el.classList.add('is-visible'));
 
-  // Contact form opens draft in email app; never claims message was sent.
-  const mailForm = $('[data-mailto-form]');
-  if (mailForm) mailForm.addEventListener('submit', event => {
-    event.preventDefault();
-    if (!mailForm.reportValidity()) return;
-    const name = $('[name="name"]',mailForm).value.trim();
-    const email = $('[name="email"]',mailForm).value.trim();
-    const message = $('[name="message"]',mailForm).value.trim();
-    const subject = encodeURIComponent(`Contato pelo portfólio — ${name}`);
-    const body = encodeURIComponent(`Olá, Gabriel!\n\n${message}\n\nNome: ${name}\nE-mail: ${email}\n\nMensagem preparada no website (o envio depende de confirmação).`);
-    $('[data-mailto-status]',mailForm).textContent='Seu aplicativo de e-mail será aberto com a mensagem preparada. Confirme o envio nele.';
-    window.location.href = `mailto:gabrielbassoadc@outlook.com?subject=${subject}&body=${body}`;
-  });
+  // Real portfolio contact form — submits to FormSubmit without opening an email application.
+  // The destination address needs one-time verification by Gabriel before notifications begin.
+  const contactForm = $('[data-contact-form]');
+  if (contactForm) {
+    const submitButton = $('[data-contact-submit]', contactForm);
+    const status = $('[data-contact-status]', contactForm);
+    const originalButtonHtml = submitButton.innerHTML;
+    let sending = false;
+    const setStatus = (message, type = '') => {
+      status.textContent = message;
+      status.dataset.state = type;
+    };
+    contactForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (sending || !contactForm.reportValidity()) return;
+      // A honeypot is only a frictionless first filter; the provider also handles spam.
+      if ($('[name="_honey"]', contactForm).value.trim()) return;
+
+      sending = true;
+      contactForm.setAttribute('aria-busy', 'true');
+      submitButton.disabled = true;
+      submitButton.textContent = 'Enviando mensagem…';
+      setStatus('Enviando sua mensagem com segurança…', 'loading');
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 20000);
+      try {
+        const action = new URL(contactForm.action);
+        action.pathname = '/ajax' + action.pathname;
+        const response = await fetch(action.href, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new URLSearchParams(new FormData(contactForm)),
+          signal: controller.signal
+        });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const data = await response.json();
+        const accepted = data && (data.success === true || data.success === 'true');
+        if (!accepted) throw new Error('Resposta sem confirmação do serviço.');
+        contactForm.reset();
+        setStatus('Mensagem enviada! Obrigado pelo contato. Sua solicitação foi recebida pelo serviço de envio e retornarei assim que possível.', 'success');
+      } catch (error) {
+        const isTimeout = error && error.name === 'AbortError';
+        setStatus(isTimeout
+          ? 'O envio demorou mais que o esperado. Confira sua conexão e tente novamente, ou me chame pelo WhatsApp.'
+          : 'Não foi possível confirmar o envio. Seus dados continuam preenchidos: tente novamente ou fale comigo pelo WhatsApp.', 'error');
+      } finally {
+        clearTimeout(timeout);
+        sending = false;
+        contactForm.removeAttribute('aria-busy');
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonHtml;
+      }
+    });
+  }
 
   // Actual interactive preview: iframe resizing. Nothing decorative.
   const controls = $('[data-preview-controls]');

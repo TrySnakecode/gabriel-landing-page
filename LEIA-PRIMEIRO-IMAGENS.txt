@@ -1,0 +1,19 @@
+GABRIEL BASSO — PORTFOLIO COM VISUAL MAIS NATURAL
+
+
+O que foi atualizado:
+- Bruma: imagem de capa e ambientes Casa Pátio (pátio, sala, cozinha e suíte).
+- Alva: capa da clínica com cores mais neutras e composição mais próxima de um espaço funcional.
+- Prumo: nova imagem corporativa, com escala de ambiente mais realista.
+- Risco: nova imagem do estúdio; artes digitais dos trabalhos permanecem conceituais.
+- Apartamento Aura e Refúgio Neblina: ajuste sutil de tonalidade e textura.
+- Não foram alterados o retrato de Gabriel, formulário FormSubmit, links de contato ou animação contínua.
+
+AVISO: as novas imagens são visualizações conceituais geradas para as marcas fictícias; não são fotografias de obras reais atribuídas a clientes.
+A representação visual tem propósito demonstrativo e não deve ser tratada como registro de trabalhos executados.
+
+O teste de HTML/links/arquivos pode ser feito localmente; o envio real do formulário ainda depende da ativação do e-mail no FormSubmit.
+
+PUBLICAÇÃO NO GITHUB PAGES
+Extraia o ZIP, entre na pasta e envie SEU CONTEÚDO (index.html + assets + demo + projetos...) para a RAIZ do repositório.
+Não envie apenas o ZIP. Depois, faça commit e atualize o navegador com Ctrl+F5.

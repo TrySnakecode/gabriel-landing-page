@@ -117,10 +117,10 @@
   const floorplan = $('[data-floorplan]');
   if (floorplan) {
     const rooms = {
-      patio:{title:'Pátio interno',text:'O jardim organiza a casa ao redor da luz natural, da vegetação e da água.',meta:'Vegetação · Água · Travertino',image:'casa-patio.svg',alt:'Pátio interno da Casa Pátio, ilustração conceitual'},
-      sala:{title:'Sala de estar',text:'Um ambiente aberto para o jardim, com painéis de madeira clara e superfícies táteis.',meta:'Madeira clara · Vidro · Luz natural',image:'casa-sala.svg',alt:'Estar da Casa Pátio, ilustração conceitual'},
-      cozinha:{title:'Cozinha integrada',text:'O plano de trabalho acompanha a transparência e a fluidez dos espaços compartilhados.',meta:'Pedra natural · Madeira · Integração',image:'casa-cozinha.svg',alt:'Cozinha da Casa Pátio, ilustração conceitual'},
-      suite:{title:'Suíte privativa',text:'Um espaço mais protegido, com materiais claros e luz indireta para uma atmosfera de descanso.',meta:'Linho · Madeira · Intimidade',image:'casa-suite.svg',alt:'Suíte da Casa Pátio, ilustração conceitual'}
+      patio:{title:'Pátio interno',text:'O jardim organiza a casa ao redor da luz natural, da vegetação e da água.',meta:'Vegetação · Água · Travertino',image:'casa-patio.webp',alt:'Ambiente conceitual da Casa Pátio, com materiais naturais e vegetação'},
+      sala:{title:'Sala de estar',text:'Um ambiente aberto para o jardim, com painéis de madeira clara e superfícies táteis.',meta:'Madeira clara · Vidro · Luz natural',image:'casa-sala.webp',alt:'Sala de estar conceitual da Casa Pátio, integrada ao jardim'},
+      cozinha:{title:'Cozinha integrada',text:'O plano de trabalho acompanha a transparência e a fluidez dos espaços compartilhados.',meta:'Pedra natural · Madeira · Integração',image:'casa-cozinha.webp',alt:'Cozinha conceitual de acabamentos em pedra e madeira'},
+      suite:{title:'Suíte privativa',text:'Um espaço mais protegido, com materiais claros e luz indireta para uma atmosfera de descanso.',meta:'Linho · Madeira · Intimidade',image:'casa-suite.webp',alt:'Suíte conceitual com texturas naturais e iluminação suave'}
     };
     $$('[data-room]',floorplan).forEach(button => button.addEventListener('click', () => {
       $$('[data-room]',floorplan).forEach(b => {b.classList.remove('active');b.setAttribute('aria-pressed','false');});
@@ -140,8 +140,8 @@
   if(lighting) $$('[data-light]',lighting).forEach(button=>button.addEventListener('click',()=>{
     const isDay=button.dataset.light==='dia';
     const scene=$('[data-lighting-image]',lighting);
-    scene.src=imageAsset(isDay?'refugio-dia.svg':'refugio-noite.svg');
-    scene.alt=isDay?'Ilustração diurna do Refúgio Neblina':'Ilustração noturna do Refúgio Neblina';
+    scene.src=imageAsset(isDay?'refugio-dia.webp':'refugio-noite.webp');
+    scene.alt=isDay?'Visualização conceitual diurna do Refúgio Neblina':'Visualização conceitual noturna do Refúgio Neblina';
     $$('[data-light]',lighting).forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
   }));
 

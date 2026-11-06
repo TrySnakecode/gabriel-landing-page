@@ -1,0 +1,59 @@
+{
+  "pages": 39,
+  "local_references_checked": 834,
+  "external_references": 218,
+  "missing": [],
+  "anchors_missing": [],
+  "responsive_interactions": [
+    {
+      "viewport": "small mobile",
+      "overflow": 0,
+      "marquee_copies": 2,
+      "finder": "ok",
+      "page_errors": 0
+    },
+    {
+      "viewport": "mobile",
+      "overflow": 0,
+      "marquee_copies": 2,
+      "finder": "ok",
+      "page_errors": 0
+    },
+    {
+      "viewport": "tablet",
+      "overflow": 0,
+      "marquee_copies": 2,
+      "finder": "ok",
+      "page_errors": 0
+    },
+    {
+      "viewport": "desktop",
+      "overflow": 0,
+      "marquee_copies": 2,
+      "finder": "ok",
+      "page_errors": 0
+    },
+    {
+      "viewport": "wide desktop",
+      "overflow": 0,
+      "marquee_copies": 2,
+      "finder": "ok",
+      "page_errors": 0
+    }
+  ],
+  "contact": "valid HTML POST to configured FormSubmit.io (not submitted)",
+  "demo_smoke_tests": {
+    "representative_pages_tested": 11,
+    "viewports_tested": 22,
+    "js_errors": 0,
+    "horizontal_overflow_failures": 0,
+    "method": "offline browser snapshot using local assets; not live CDN/delivery test"
+  },
+  "external_dependencies_not_live_tested": [
+    "Pexels remote photos",
+    "Google Fonts",
+    "GSAP/ScrollTrigger CDN",
+    "FormSubmit.io real submission"
+  ],
+  "launch_status": "ready for publication and manual live-domain QA; no live FormSubmit test was sent"
+}

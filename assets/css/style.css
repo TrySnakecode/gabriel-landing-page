@@ -83,3 +83,41 @@
 .photo-disclosure a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 /* Preserve actual photographic texture; do not blur, enlarge with CSS filters, or apply faux grain. */
 .project-image img,.case-hero-art img,.demo-visual img,.room-result-image{image-rendering:auto}
+
+/* 2026-11-06 — Personal presence: the portfolio belongs to a human, not an anonymous studio. */
+.hero-person-intro{display:none}
+.portfolio-about .about-side{min-width:0}
+.about-photo{position:relative;width:min(100%,350px);margin:40px 0 0;overflow:hidden;border:1px solid #ffffff33;background:#41362e}
+.about-photo img{display:block;width:100%;height:365px;object-fit:cover;object-position:center 24%;filter:saturate(.87)}
+.about-photo figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:15px 18px 18px;border-top:1px solid #ffffff30;color:#fff}
+.about-photo figcaption span{font-size:.95rem;font-weight:750;letter-spacing:-.025em}
+.about-photo figcaption small{font-size:.58rem;text-transform:uppercase;letter-spacing:.13em;color:#ccc}
+.portfolio-about .about-handwritten{font-family:var(--serif);font-style:italic;font-size:1.7rem;line-height:1.4;color:var(--copper)!important;margin-top:22px;max-width:350px}
+.portfolio-about .about-copy h2{font-size:clamp(3rem,5.4vw,5.7rem);line-height:1.05;margin:10px 0 35px}
+.portfolio-about .about-copy h2 .serif{color:var(--copper)}
+.portfolio-about .about-copy .lead{line-height:1.65}
+.about-mobile-label{display:none}
+.about-personal-note{border-left:2px solid var(--copper);padding:6px 0 3px 20px;margin:29px 0 27px}
+.about-note-index{display:block;font-size:.64rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--copper)}
+.portfolio-about .about-personal-note p{margin:8px 0 0;color:#dfd9d2;max-width:650px}
+.about-cta-row{display:flex;align-items:center;flex-wrap:wrap;gap:26px;margin-top:32px}
+.btn-personal{background:var(--copper);color:#211f1c;font-weight:800}
+.btn-personal:hover{background:#f5b39e}
+.about-secondary-link{color:#f5eae1;text-decoration:underline;text-underline-offset:5px;font-size:.79rem;font-weight:750}
+.portfolio-about .about-honesty{margin:28px 0 0;font-size:.68rem;line-height:1.75;color:#aaa39b;max-width:560px}
+@media(max-width:1000px){.about-layout{grid-template-columns:.7fr 1fr;gap:5vw}.about-photo img{height:310px}.about-photo figcaption{flex-wrap:wrap}.about-photo figcaption small{font-size:.55rem}}
+@media(max-width:760px){
+ .hero-person-intro{display:flex;align-items:center;gap:12px;width:max-content;max-width:100%;margin:8px 0 20px;color:var(--ink);text-decoration:none}
+ .hero-person-intro img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 24%;border:2px solid var(--ivory);outline:1px solid var(--terra);flex:none}
+ .hero-person-intro strong{display:block;font-size:.76rem;line-height:1.35;letter-spacing:-.02em}
+ .hero-person-intro small{display:block;color:var(--muted);font-size:.63rem;margin-top:2px}
+ .hero-index{margin-bottom:18px}
+ .hero-grid{gap:25px}
+ .about-layout{display:grid;grid-template-columns:1fr;gap:38px}
+ .about-side .about-photo{max-width:430px;margin:23px auto 0}
+ .about-photo img{height:420px}
+ .portfolio-about .about-handwritten{text-align:center;max-width:none;margin:15px auto 0}
+ .about-copy h2{margin-top:5px!important}
+ .about-mobile-label{display:block;color:var(--copper)}
+}
+@media(max-width:420px){.hero-person-intro img{width:42px;height:42px}.hero-person-intro{margin-bottom:14px}.about-photo img{height:360px}.about-photo figcaption{padding:12px 15px}.about-photo figcaption small{font-size:.51rem}}

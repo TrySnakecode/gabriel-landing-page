@@ -56,3 +56,7 @@ A compatibilidade com `prefers-reduced-motion` foi preservada, e efeitos de movi
 ## Relatório de verificação
 
 Veja `QA-RELATORIO.json`. Foram inspecionadas 39 páginas e 830 referências locais. Foram realizados testes de interface em cinco larguras da homepage e testes de fumaça em 11 rotas representativas com duas larguras; sem erros de JavaScript e sem overflow nesses testes. A execução externa real de FormSubmit, GSAP e carregamento Pexels não foi medida nesta sessão.
+
+
+## Destaque pessoal (atualização)
+A homepage apresenta Gabriel Basso com retrato real na primeira tela, identificação pessoal visível no mobile e seção "Sobre mim" com fotografia, apresentação e links diretos de contato. Nenhum histórico de clientes foi inventado.

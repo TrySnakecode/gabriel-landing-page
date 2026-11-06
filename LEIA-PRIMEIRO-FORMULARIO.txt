@@ -49,3 +49,10 @@ PRIVACIDADE E SEGURANÇA
 - Há um campo honeypot para reduzir spam, e os envios são tratados pelo provedor.
 - A checagem de formato e os limites de caracteres são feitos no navegador.
 - Não envie dados sensíveis pelo formulário.
+
+ATUALIZAÇÃO — FAIXA ANIMADA CONTÍNUA
+------------------------------------
+- Centralizados os espaços antes e depois dos símbolos ✳.
+- Criado loop matematicamente contínuo: duas sequências idênticas e translação exata de 50%.
+- Mantidos os estilos, a velocidade original (28s) e o formulário automático.
+- Caso o GitHub Pages exiba a versão antiga após upload, atualize com Ctrl+F5.

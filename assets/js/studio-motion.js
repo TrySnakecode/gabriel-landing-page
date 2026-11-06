@@ -30,8 +30,7 @@
             .from('.new-hero h1', {opacity:0,y:33,duration:.9},.15)
             .from('.new-hero .hero-intro', {opacity:0,y:19,duration:.68},.43)
             .from('.new-hero .hero-cta', {opacity:0,y:15,duration:.65},.55)
-            .from('.new-hero .hero-signals', {opacity:0,y:12,duration:.62},.64)
-            .from('.new-hero .hero-portrait-wrap', {opacity:0,x:18,duration:1},.21);
+            .from('.new-hero .hero-signals', {opacity:0,y:12,duration:.62},.64);
         }
         if (canAnimateHero && document.querySelector('.case-page')) {
           gsap.timeline({defaults:{ease:'power3.out'}})

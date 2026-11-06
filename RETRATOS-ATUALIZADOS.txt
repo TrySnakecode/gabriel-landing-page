@@ -1,0 +1,9 @@
+RETRATOS ATUALIZADOS — GABRIEL BASSO
+
+Hero (primeira tela): gabriel-sorrindo.png — lado direito da imagem enviada.
+Sobre mim: gabriel-serio.png — lado esquerdo da imagem enviada.
+Miniatura de apresentação no mobile: gabriel-sorrindo.png.
+Os dois retratos foram apenas recortados da imagem fornecida, sem IA, retoque, reamostragem ou compressão com perdas.
+
+Para atualizar o GitHub Pages, extraia este ZIP e envie os arquivos internos para a raiz do repositório.
+O formulário FormSubmit e as demais páginas foram preservados.

@@ -230,3 +230,21 @@ html { scrollbar-color: #B49D8D #F3F0EA; }
 @media (hover:none){.hero-portrait-wrap:hover .portrait-photo{filter:none}}
 @media(max-width:800px){.site-progress{height:2px}}
 @media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none!important}.site-progress{transition:none}.hero-portrait-wrap::before{transition:none}}
+
+/* Critical reliability fix: the real portrait must never depend on JS/GSAP or scroll reveal.
+   It is high-priority content and should remain visible before animations and in reduced-motion mode. */
+.gb-hero .hero-portrait-wrap,
+.gb-hero .hero-portrait-wrap.reveal,
+.gb-hero .hero-portrait-wrap.reveal:not(.is-visible) {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+.gb-hero .portrait-photo,
+.hero-person-intro img,
+.portfolio-about .about-photo img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}

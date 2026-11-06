@@ -1,0 +1,19 @@
+CORREÇÃO DO RETRATO - GABRIEL BASSO
+
+Problema observado: foto branca/invisível que podia ser percebida durante o arraste.
+Causa provável encontrada: o retrato principal estava dentro de .reveal (opacidade 0 até IntersectionObserver) e simultaneamente recebia animação GSAP de opacidade 0.
+
+Correções:
+1. Retirado .reveal da imagem principal, de forma que ela apareça mesmo se JS ou CDN falhar.
+2. Retirada a animação duplicada GSAP da imagem principal, mantendo as demais animações do site.
+3. CSS garante a visibilidade das fotos pessoais em desktop e mobile.
+4. Usada cópia exata da foto original em gabriel-retrato-original.png (PNG, 1254x1254), com nome novo para evitar cache antigo.
+5. Mantidas as imagens e os links de projetos, formulário FormSubmit.io, navegação e estilos do site.
+
+PUBLICAÇÃO NO GITHUB PAGES:
+- Extraia este ZIP.
+- Envie TODO o conteúdo para a raiz do repositório (não a pasta, nem o ZIP).
+- Confirme o commit e aguarde o deploy.
+- Recarregue com Ctrl+Shift+R. Se ainda houver problema, confira se o arquivo assets/img/gabriel-retrato-original.png foi publicado.
+
+Observação: o efeito foi corrigido no código; a aparência no domínio público ainda precisa ser conferida após o deploy.

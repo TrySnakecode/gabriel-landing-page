@@ -1,0 +1,23 @@
+VERSÃO COM FOTOGRAFIAS REAIS — GABRIEL BASSO
+
+O site agora solicita fotografias reais diretamente do CDN do Pexels em até 2200 px,
+com versões responsivas para celular/desktop. As imagens antigas estão no pacote
+apenas como fallback para quando a internet ou o Pexels não estiverem disponíveis.
+
+IMPORTANTE: ESTAS FOTOS NÃO ESTÃO EMBUTIDAS NO ZIP.
+As fotografias de referência dependem da conexão à internet. Os direitos e fontes
+individuais estão no arquivo FOTOGRAFIAS_REAIS_FONTES_E_LIMITACOES.md.
+
+O que foi preservado:
+- formulário FormSubmit.io e ID de envio (sem mudanças)
+- animação da faixa contínua
+- ícones SVG em mobile
+- retrato real de Gabriel Basso
+- 39 páginas e navegação
+
+Como publicar: EXTRAIA este ZIP e envie TODO O SEU CONTEÚDO (não a pasta, nem o ZIP)
+para a raiz do repositório GitHub Pages. Aguarde o deploy e atualize usando Ctrl+F5.
+
+Limitações: as fotografias são referências de projetos conceituais, não obras reais
+das empresas fictícias. A comparação dia/anoitecer da Bruma permanece ilustrativa.
+Não foi possível testar o carregamento do CDN em um navegador real neste ambiente.

@@ -12,6 +12,24 @@
   const imageBase = new URL('../img/', document.currentScript.src);
   const imageAsset = name => new URL(name, imageBase).href;
 
+  // Photographic references (licensed Pexels images), full-resolution and responsive.
+  // Retain the original local file as offline fallback if the CDN cannot be reached.
+  const photoIds = {"bruma-hero.webp": "5644335", "casa-patio.webp": "13600515", "casa-sala.webp": "34622754", "casa-cozinha.webp": "36511382", "casa-suite.webp": "33197278", "apartamento-aura.webp": "7546720", "alva-hero.webp": "10829709", "prumo-hero.webp": "29253513", "risco-hero.webp": "32075861", "risco-frequencia.webp": "38888711", "risco-orbita.webp": "12193430", "risco-materia.webp": "5292240"};
+  const realPhoto = (name, width=2200) => photoIds[name]
+    ? `https://images.pexels.com/photos/${photoIds[name]}/pexels-photo-${photoIds[name]}.jpeg?auto=compress&cs=srgb&w=${width}`
+    : imageAsset(name);
+  const setPhoto = (img,name,alt) => {
+    if (!img) return;
+    img.dataset.photoFallback=imageAsset(name);
+    if (photoIds[name]) {
+      img.srcset=[900,1500,2200].map(w=>`${realPhoto(name,w)} ${w}w`).join(', ');
+      img.sizes='(max-width:700px) 100vw, 65vw';
+    } else img.removeAttribute('srcset');
+    img.onerror=()=>{img.onerror=null;img.removeAttribute('srcset');img.src=imageAsset(name);};
+    img.src=realPhoto(name);img.alt=alt;
+  };
+
+
   // Continuous, viewport-aware marquees (portfolio and Risco).
   // Build two *identical* groups, each longer than the viewport, then move by
   // exactly one group. This prevents blank frames and visible jumps at any width.
@@ -121,7 +139,7 @@
       $('[data-room-text]',floorplan).textContent=room.text;
       $('[data-room-meta]',floorplan).textContent=room.meta;
       const image=$('.room-result-image',floorplan);
-      image.src=imageAsset(room.image); image.alt=room.alt;
+      setPhoto(image,room.image,room.alt);
     }));
   }
 

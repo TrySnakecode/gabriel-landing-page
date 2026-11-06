@@ -77,3 +77,9 @@
 @media(prefers-reduced-motion:reduce){
   .ticker-track,.risco-marquee-track{animation:none!important;transform:none!important;will-change:auto}
 }
+
+/* Real-photography editorial treatment, and conspicuous mock-brand disclosure. */
+.photo-disclosure{max-width:1240px;margin:35px auto 0;padding:18px 25px;border-top:1px solid currentColor;opacity:.64;font:400 .72rem/1.8 'Manrope',Arial,sans-serif;text-align:center}
+.photo-disclosure a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* Preserve actual photographic texture; do not blur, enlarge with CSS filters, or apply faux grain. */
+.project-image img,.case-hero-art img,.demo-visual img,.room-result-image{image-rendering:auto}

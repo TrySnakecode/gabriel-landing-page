@@ -7,6 +7,7 @@
   const $ = (s, context = document) => context.querySelector(s);
   const $$ = (s, context = document) => [...context.querySelectorAll(s)];
   const safeText = v => String(v ?? '');
+  const T = window.GBTranslate || (s => String(s));
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Resolve assets from the actual script location (supports local file:// and hosted subfolders).
   const imageBase = new URL('../img/', document.currentScript.src);
@@ -130,6 +131,7 @@
       cozinha:{title:'Cozinha integrada',text:'O plano de trabalho acompanha a transparência e a fluidez dos espaços compartilhados.',meta:'Pedra natural · Madeira · Integração',image:'casa-cozinha.webp',alt:'Cozinha conceitual de acabamentos em pedra e madeira'},
       suite:{title:'Suíte privativa',text:'Um espaço mais protegido, com materiais claros e luz indireta para uma atmosfera de descanso.',meta:'Linho · Madeira · Intimidade',image:'casa-suite.webp',alt:'Suíte conceitual com texturas naturais e iluminação suave'}
     };
+    if(document.documentElement.lang === 'en')Object.values(rooms).forEach(room=>{for(const key of ['title','text','meta','alt'])room[key]=T(room[key]);});
     $$('[data-room]',floorplan).forEach(button => button.addEventListener('click', () => {
       $$('[data-room]',floorplan).forEach(b => {b.classList.remove('active');b.setAttribute('aria-pressed','false');});
       button.classList.add('active');button.setAttribute('aria-pressed','true');
@@ -149,7 +151,7 @@
     const isDay=button.dataset.light==='dia';
     const scene=$('[data-lighting-image]',lighting);
     scene.src=imageAsset(isDay?'refugio-dia.webp':'refugio-noite.webp');
-    scene.alt=isDay?'Visualização conceitual diurna do Refúgio Neblina':'Visualização conceitual noturna do Refúgio Neblina';
+    scene.alt=T(isDay?'Visualização conceitual diurna do Refúgio Neblina':'Visualização conceitual noturna do Refúgio Neblina');
     $$('[data-light]',lighting).forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
   }));
 
@@ -162,12 +164,13 @@
       linho:['Linho','Tecido natural cuja textura discreta contribui para uma atmosfera acolhedora e tátil.'],
       bronze:['Bronze','Detalhes metálicos de acabamento quente que pontuam iluminação, puxadores e acessórios.']
     };
+    if(document.documentElement.lang === 'en')Object.values(details).forEach(pair=>{pair[0]=T(pair[0]);pair[1]=T(pair[1]);});
     $$('[data-material]',materials).forEach(button=>button.addEventListener('click',()=>{
       const key=button.dataset.material, d=details[key];if(!d)return;
       $$('[data-material]',materials).forEach(x=>x.setAttribute('aria-pressed',String(x===button)));
       $('[data-material-title]').textContent=d[0];
       $('[data-material-description]').textContent=d[1];
-      const image=$('[data-material-image]');image.src=imageAsset(`material-${key}.svg`);image.alt=`Amostra gráfica conceitual de ${d[0]}`;
+      const image=$('[data-material-image]');image.src=imageAsset(`material-${key}.svg`);image.alt=(document.documentElement.lang === 'en'?`Concept material swatch of ${d[0]}`:`Amostra gráfica conceitual de ${d[0]}`);
     }));
   }
 
@@ -175,20 +178,21 @@
     root.replaceChildren();
     fields.forEach(([key,value])=>{
       const row=document.createElement('div');
-      const name=document.createElement('strong');name.textContent=safeText(key);
-      const data=document.createElement('span');data.textContent=safeText(value);
+      const name=document.createElement('strong');name.textContent=T(safeText(key));
+      const data=document.createElement('span');data.textContent=T(safeText(value));
       row.append(name,data);root.append(row);
     });
   };
   const formatDate = date => {
     if(!date) return '';
     const [y,m,d] = date.split('-');
+    if(document.documentElement.lang==='en')return new Date(Number(y),Number(m)-1,Number(d)).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
     return `${d}/${m}/${y}`;
   };
   const showError = (root,message) => {
     const active=$('.booking-step.active,.quote-step.active',root);
     const error=$('[data-booking-error],[data-quote-error]',active);
-    if(error){error.textContent=message;error.hidden=!message;}
+    if(error){error.textContent=T(message);error.hidden=!message;}
   };
 
   // Alva — non-persistent booking simulation.
@@ -331,7 +335,7 @@
       const button=$('[data-risco-palette]',panel);
       // Preserve the vector icon on palette swaps; never fall back to an emoji glyph.
       const icon=button.querySelector('.ui-icon')?.cloneNode(true);
-      button.textContent=inverse?'Inverter linguagem ':'Voltar à linguagem original ';
+      button.textContent=T(inverse?'Inverter linguagem ':'Voltar à linguagem original ');
       if(icon)button.append(icon);
       button.style.color='inherit';button.style.borderColor='currentColor';
     });

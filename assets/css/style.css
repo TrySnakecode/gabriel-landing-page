@@ -121,3 +121,23 @@
  .about-mobile-label{display:block;color:var(--copper)}
 }
 @media(max-width:420px){.hero-person-intro img{width:42px;height:42px}.hero-person-intro{margin-bottom:14px}.about-photo img{height:360px}.about-photo figcaption{padding:12px 15px}.about-photo figcaption small{font-size:.51rem}}
+
+/* Bilingual language selector — shared by portfolio, case studies and all concept demos. */
+.lang-switch{display:inline-flex;align-items:center;justify-content:center;gap:2px;flex:none;padding:3px;border:1px solid currentColor;border-radius:100px;line-height:1;white-space:nowrap;position:relative;z-index:51;background:color-mix(in srgb,var(--ivory,#F3F0EA) 90%,transparent);color:var(--ink,#242321);backdrop-filter:blur(9px)}
+.lang-switch a{display:inline-flex;align-items:center;justify-content:center;min-width:31px;min-height:30px;padding:5px 7px;border-radius:100px;font-family:var(--sans,Arial,sans-serif);font-size:10px;font-weight:800;letter-spacing:.06em;color:inherit;opacity:.7;transition:background .2s,color .2s,opacity .2s}
+.lang-switch a:hover{opacity:1}.lang-switch a.active{background:var(--ink,#242321);color:var(--ivory,#F3F0EA);opacity:1}
+.gb-header .lang-switch{margin-inline:6px 0}.gb-header-actions .lang-switch{flex-shrink:0}
+.demo-nav .lang-switch{margin-left:auto;order:4}.demo-nav .menu-toggle{order:5}
+.demo-nav .back-portfolio{order:3}.demo-nav nav{order:2}.demo-nav .demo-brand{order:1}
+@media(max-width:780px){.gb-header-actions .lang-switch{margin:0 8px 0 0}.lang-switch a{min-width:30px;min-height:30px}.demo-nav{gap:8px}.demo-nav .lang-switch{margin-left:auto}.demo-nav .back-portfolio{font-size:.6rem}}
+@media(max-width:420px){.demo-nav .back-portfolio{display:none}.demo-nav .demo-brand{max-width:42%;flex:0 1 auto}.demo-nav .lang-switch{margin-left:auto}.lang-switch a{min-width:29px}}
+@media(prefers-reduced-motion:reduce){.lang-switch a{transition:none}}
+/* Avoid min-content overflow in translated Risco project grids on narrow screens. */
+.theme-risco .copy-grid > *{min-width:0}
+.theme-risco .copy-grid .risco-art-frame{max-width:100%;width:100%}
+.theme-risco .copy-grid .case-color-strip{min-width:0;max-width:100%}
+.theme-risco .copy-grid .color-chip{min-width:0}
+@media(max-width:600px){
+.theme-risco .risco-project-page h1,.theme-risco .copy-grid h2,.theme-risco .copy-grid h3{overflow-wrap:anywhere}
+.theme-risco .risco-palette-swap h2{font-size:clamp(2.1rem,8vw,3.3rem)!important;overflow-wrap:anywhere}
+}
